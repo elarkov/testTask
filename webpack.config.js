@@ -13,27 +13,42 @@ rules.push({
     })
 });
 
+rules.push({
+  test: /\.scss$/,
+  use: ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: ['css-loader?url=false', 'sass-loader']
+  })
+});
+
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        filename: '[name].[hash].js',
-        path: path.resolve('dist')
-    },
-    devtool: 'source-map',
-    module: { rules },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            compress: {
-                drop_debugger: false,
-                warnings: false
-            }
-        }),
-        new ExtractTextPlugin('styles.css'),
-        new HtmlPlugin({
-            title: '2GIS testTask',
-            template: 'index.hbs'
-        }),
-        new CleanWebpackPlugin(['dist'])
-    ]
+  entry: {
+    index: './src/index.js'
+  },
+  devServer: {
+    index: 'index.html'
+  },
+  output: {
+    filename: 'js/bundle.js',
+    path: path.resolve('dist')
+  },
+  devtool: 'source-map',
+  module: { rules },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        drop_debugger: false,
+        warnings: false
+      }
+    }),
+    new ExtractTextPlugin('./css/styles.css'),
+    new HtmlPlugin({
+      title: '2GIS testTask',
+      template: 'index.hbs',
+      filename: 'index.html',
+      chunks: ['index']
+    }),
+    new CleanWebpackPlugin(['dist'])
+  ]
 };
