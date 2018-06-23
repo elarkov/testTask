@@ -6,8 +6,13 @@ import './scss/layout/base.scss';
 import render from './templates/cards.hbs';
 
 /*=== modules ===*/
-import {cards} from "./js/cards";
+import {cards} from './js/cards';
+import {delLastCards} from "./js/delLastCard";
+
 
 /*=== render cards ===*/
 const cardsContainer = document.querySelector('.cards');
 cardsContainer.innerHTML = render({items: cards});
+
+delLastCards();
+

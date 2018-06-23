@@ -1,10 +1,11 @@
-var cards =
-  [
+
+var cards = [
+
     {
       type: 'narrow',
     },
     {
-      type: 'narrow',
+      type: 'wide',
     },
     {
       type: 'narrow',
@@ -15,6 +16,7 @@ var cards =
     {
       type: 'narrow',
     },
+
   ];
 
 
