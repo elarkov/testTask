@@ -1,7 +1,7 @@
 {{#each items}}
 	<li class="cards__item {{type}}">
 		<div class="cards__digs">
-			<span>{{number}}</span>
+			<span>{{[helper/increment] @key}}</span>
 		</div>
 	</li>
 {{/each}}

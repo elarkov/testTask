@@ -1,6 +1,5 @@
 
 var cards = [
-
     {
       type: 'narrow',
     },

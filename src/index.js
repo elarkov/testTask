@@ -11,7 +11,10 @@ import {clickDinamicBtn} from "./js/clickDinamicBtn";
 import {addCard} from "./js/addCard";
 
 
+
 clickDinamicBtn();
 addCard();
+
+
 
 
