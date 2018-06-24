@@ -1,26 +1,35 @@
-import {addCard} from "./addCard";
-//import {cards} from "./cards";
+import render from '../templates/cards.hbs';
+import {cards} from "./cards";
+import {cardsContainer} from "../index";
 
-/*=== dinamic display cards to press buttons Shift, Shift+Alt ===*/
+//const cardsContainer = document.querySelector('.cards');
+
+function resetCards(elem, value) {
+  elem.innerHTML = render({items: value});
+}
+
+/*=== dinamic display of cards on pressing buttons Shift, Shift+Alt ===*/
 function clickDinamicBtn() {
 
   let card = document.querySelector('.cards');
-
   card.addEventListener('click', function(event) {
 
     if(event.target.tagName === 'LI') {
-
-      if(event.shiftKey && event.altKey) {
-        addCard('wide');
-      } else if(event.shiftKey) {
-        addCard();
+      if(event.shiftKey) {
+        let newTypeCard = event.altKey ? 'wide' : 'narrow';
+        cards.push({
+          type: newTypeCard
+        });
+        console.log(cards);
       } else {
-        card.lastElementChild.remove();
+        cards.pop();
       }
-
     }
 
+    resetCards(cardsContainer, cards);
+
   });
+
 
 
 }
